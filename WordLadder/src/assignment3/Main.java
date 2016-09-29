@@ -45,6 +45,8 @@ public class Main {
 		// initialize your static variables or constants here.
 		// We will call this method before running our JUNIT tests.  So call it 
 		// only once at the start of main.
+		
+		
 	}
 	
 	/**
@@ -71,17 +73,46 @@ public class Main {
 		// Return empty list if no ladder.
 		// TODO some code
 		Set<String> dict = makeDictionary();
+		
 		// TODO more code
 		
 		return null; // replace this line later with real return
 	}
 	
+	private static getChildren
+	
     public static ArrayList<String> getWordLadderBFS(String start, String end) {
-		
+		if(start.equals(end)){
+			//do stuff
+		}
+    	
 		// TODO some code
 		Set<String> dict = makeDictionary();
-		// TODO more code
 		
+		
+	ArrayList<String> returnVal = new ArrayList<String>();
+				
+		LinkedList<Node> queue = new LinkedList<Node>(); //Queue to keep track of words
+		queue.add(new Node(start, null));
+		
+		Node head;
+		while(!queue.isEmpty()){
+			head = queue.pop();
+			if(head.getName().equals(end)){
+				//we're done
+			}
+			
+			if(!head.isVisited()){
+				head.setVisisted();
+				// TODO stuff
+			}
+		
+		
+					
+		}
+		
+		// TODO more code
+		//if we look for a word in dict, we need to remove it.
 		return null; // replace this line later with real return
 	}
     
