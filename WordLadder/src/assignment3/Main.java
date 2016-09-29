@@ -39,6 +39,7 @@ public class Main {
         System.out.println(start_end);
 
 		// TODO methods to read in words, output ladder
+        getWordLadderBFS("deads", "dears");
 	}
 	
 	public static void initialize() {
@@ -88,12 +89,16 @@ public class Main {
 		// TODO some code
 		Set<String> dict = makeDictionary();
 		
+		//history to avoid checking duplicates. It's hashed, so it's O(1)
+		Set<Node> history = new HashSet<Node>();
+
 		
-	ArrayList<String> returnVal = new ArrayList<String>();
+	    ArrayList<String> returnVal = new ArrayList<String>();
 				
 		LinkedList<Node> queue = new LinkedList<Node>(); //Queue to keep track of words
 		queue.add(new Node(start, null));
 		
+		char[] permutations;
 		Node head;
 		while(!queue.isEmpty()){
 			head = queue.pop();
@@ -101,8 +106,20 @@ public class Main {
 				//we're done
 			}
 			
-			if(!head.isVisited()){
-				head.setVisisted();
+			if(!history.contains(head)){
+				history.add(head);
+				
+				//generate permutations (neighbors/(children?)) of head
+				for(int i = 0; i < head.getName().length(); i++){
+					for(char j = 'a'; j <= 'z'; j++){
+						permutations = head.getName().toCharArray();
+						permutations[i] = j;
+						String permutationString = new String(permutations);
+						if(dict.contains(permutationString)){
+							queue.add(new Node(permutationString, head));
+						}
+					}
+				}
 				// TODO stuff
 			}
 		

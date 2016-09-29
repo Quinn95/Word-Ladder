@@ -26,5 +26,5 @@ public class Node{
 	public void setVisisted(){
 		this.visited = true;
 	}
-		
+
 }
