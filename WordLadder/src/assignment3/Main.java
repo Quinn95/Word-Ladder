@@ -39,7 +39,7 @@ public class Main {
         System.out.println(start_end);
 
 		// TODO methods to read in words, output ladder
-        getWordLadderBFS("deads", "dears");
+        getWordLadderBFS("smart", "money");
 	}
 	
 	public static void initialize() {
@@ -88,9 +88,9 @@ public class Main {
     	
 		// TODO some code
 		Set<String> dict = makeDictionary();
-		
+				
 		//history to avoid checking duplicates. It's hashed, so it's O(1)
-		Set<Node> history = new HashSet<Node>();
+		Set<String> history = new HashSet<String>();
 
 		
 	    ArrayList<String> returnVal = new ArrayList<String>();
@@ -100,21 +100,22 @@ public class Main {
 		
 		char[] permutations;
 		Node head;
-		while(!queue.isEmpty()){
+		while(queue.isEmpty() == false){
 			head = queue.pop();
+			System.out.println(head.getName());
 			if(head.getName().equals(end)){
-				//we're done
+				System.exit(3);
 			}
 			
-			if(!history.contains(head)){
-				history.add(head);
+			if(history.contains(head.getName().toUpperCase()) == false){
+				history.add(head.getName().toUpperCase());
 				
 				//generate permutations (neighbors/(children?)) of head
 				for(int i = 0; i < head.getName().length(); i++){
 					for(char j = 'a'; j <= 'z'; j++){
 						permutations = head.getName().toCharArray();
 						permutations[i] = j;
-						String permutationString = new String(permutations);
+						String permutationString = new String(permutations).toUpperCase();
 						if(dict.contains(permutationString)){
 							queue.add(new Node(permutationString, head));
 						}
