@@ -79,7 +79,6 @@ public class Main {
 		return null; // replace this line later with real return
 	}
 	
-	private static getChildren
 	
     public static ArrayList<String> getWordLadderBFS(String start, String end) {
 		if(start.equals(end)){
