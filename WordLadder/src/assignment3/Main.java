@@ -103,7 +103,7 @@ public class Main {
 		while(queue.isEmpty() == false){
 			head = queue.pop();
 			System.out.println(head.getName());
-			if(head.getName().equals(end)){
+			if(head.getName().equals(end.toUpperCase())){
 				System.exit(3);
 			}
 			
@@ -117,7 +117,9 @@ public class Main {
 						permutations[i] = j;
 						String permutationString = new String(permutations).toUpperCase();
 						if(dict.contains(permutationString)){
-							queue.add(new Node(permutationString, head));
+							if(history.contains(permutationString) == false){
+								queue.add(new Node(permutationString, head));
+							}
 						}
 					}
 				}
