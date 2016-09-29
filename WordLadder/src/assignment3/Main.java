@@ -35,7 +35,9 @@ public class Main {
 			ps = System.out;			// default to Stdout
 		}
 		initialize();
-		
+        ArrayList<String> start_end = parse(kb);
+        System.out.println(start_end);
+
 		// TODO methods to read in words, output ladder
 	}
 	
@@ -52,7 +54,15 @@ public class Main {
 	 */
 	public static ArrayList<String> parse(Scanner keyboard) {
 		// TO DO
-		return null;
+        System.out.print("Enter starting and ending word: ");
+        String input = keyboard.nextLine();
+        input.trim(); //incase they have any leading or trailing spaces
+        if (!input.equals("/quit")){
+            String[] words = input.split(" ");
+            ArrayList<String> start_end = new ArrayList<String>(Arrays.asList(words));
+            return start_end;
+        }
+        return null;
 	}
 	
 	public static ArrayList<String> getWordLadderDFS(String start, String end) {
