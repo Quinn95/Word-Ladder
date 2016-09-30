@@ -97,7 +97,11 @@ public class Main {
 					if(dict.contains(permutationString) == true){
 						if(history.contains(permutationString) == false){
 							Node w = DFSTree(new Node(permutationString.toUpperCase(), n), end.toUpperCase(), dict, history);
-							return w;
+							if (w != null){
+								if (w.getName().equals(end)){
+									return w;
+								}
+							}
 						}
 					}
 				}
