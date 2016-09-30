@@ -201,7 +201,7 @@ public class Main {
 		return words;
 	}
 	
-	public static void printLadder(ArrayList<String> ladder) {
+	public static void printLadder(ArrayList<String> ladder, ArrayList<String> start_end) {
 		if (ladder.size() == 0){
 			System.out.println("no word ladder can be found between " + start_end.get(0) + " and " + start_end.get(1) + ".");
 		}
