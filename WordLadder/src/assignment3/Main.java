@@ -235,12 +235,7 @@ public class Main {
 			System.out.println("no word ladder can be found between " + start_end.get(0) + " and " + start_end.get(1) + ".");
 		}
 		else{
-			if (ladder.size() == 0){
-	        	System.out.println("no word adder can be found between " + ladder.get(0) + " and " + ladder.get(ladder.size() - 1) + ".");
-	        }
-	        else{
-	        	System.out.println("a " + ladder.size() + "-rung word ladder exist between "+ ladder.get(0) + " and " + ladder.get(ladder.size() - 1) + ".");
-	        }
+	        	System.out.println("a " + (ladder.size() - 2) + "-rung word ladder exist between "+ ladder.get(0) + " and " + ladder.get(ladder.size() - 1) + ".");
 			for(String s : ladder){
 				System.out.println(s.toLowerCase());
 			}
