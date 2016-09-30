@@ -1,10 +1,21 @@
+/* WORD LADDER Node.java
+ * EE422C Project 3 submission by
+ * <Kevin Wong>
+ * <kw25779>
+ * <16475>
+ * <Quinten Zambeck>
+ * <qaz62>
+ * <16470>
+ * Slip days used: <1>
+ * Git URL: https://github.com/Quinn95/Word-Ladder.git
+ * Fall 2016
+ */
+
 package assignment3;
 
 public class Node{
 	private String name;
 	private Node parent;
-	private boolean visited = false;
-	
 	
 	Node(String name, Node parent){
 		this.name = name.toUpperCase();
@@ -17,13 +28,5 @@ public class Node{
 	
 	public Node getParent(){
 		return parent;
-	}
-	
-	public boolean isVisited(){
-		return visited;
-	}
-	
-	public void setVisisted(){
-		this.visited = true;
 	}
 }
