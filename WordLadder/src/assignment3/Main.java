@@ -68,12 +68,12 @@ public class Main {
         System.out.print("Enter starting and ending word: ");
         String input = keyboard.nextLine();
         input.trim(); //incase they have any leading or trailing spaces
-        if (!input.equals("/quit")){
-            String[] words = input.split(" ");
-            ArrayList<String> start_end = new ArrayList<String>(Arrays.asList(words));
-            return start_end;
+        if (input.equals("/quit")){
+        	System.exit(0);
         }
-        return null;
+        String[] words = input.split(" ");
+        ArrayList<String> start_end = new ArrayList<String>(Arrays.asList(words));
+        return start_end;
 	}
 	
 	/**
