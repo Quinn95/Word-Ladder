@@ -11,7 +11,6 @@
  * Fall 2016
  */
 
-
 package assignment3;
 import java.util.*;
 import java.io.*;
@@ -34,18 +33,13 @@ public class Main {
 			ps = System.out;			// default to Stdout
 		}
 		initialize();
-        ArrayList<String> start_end = parse(kb);
+        	ArrayList<String> start_end = parse(kb);
 		
-        ArrayList<String> ladderBFS = getWordLadderBFS(start_end.get(0), start_end.get(1));
-        printLadder(ladderBFS, start_end);
-        
-        ArrayList<String> ladderDFS = getWordLadderDFS(start_end.get(0), start_end.get(1));
-        printLadder(ladderDFS, start_end);
+		ArrayList<String> ladderBFS = getWordLadderBFS(start_end.get(0), start_end.get(1));
+		printLadder(ladderBFS, start_end);
 
-		// TODO methods to read in words, output ladder
-        //getWordLadderDFS("smart", "money");
-        //System.out.println();
-        //printLadder(getWordLadderBFS("cells", "below"));
+		ArrayList<String> ladderDFS = getWordLadderDFS(start_end.get(0), start_end.get(1));
+		printLadder(ladderDFS, start_end);
 
 	}
 	
@@ -64,15 +58,15 @@ public class Main {
 	 */
 	public static ArrayList<String> parse(Scanner keyboard) {
 		// TO DO
-        System.out.print("Enter starting and ending word: ");
-        String input = keyboard.nextLine();
-        input.trim(); //incase they have any leading or trailing spaces
-        if (input.equals("/quit")){
-        	System.exit(0);
-        }
-        String[] words = input.split(" ");
-        ArrayList<String> start_end = new ArrayList<String>(Arrays.asList(words));
-        return start_end;
+		System.out.print("Enter starting and ending word: ");
+		String input = keyboard.nextLine();
+		input.trim(); //incase they have any leading or trailing spaces
+		if (input.equals("/quit")){
+			System.exit(0);
+		}
+		String[] words = input.split(" ");
+		ArrayList<String> start_end = new ArrayList<String>(Arrays.asList(words));
+		return start_end;
 	}
 	
 	/**
@@ -202,10 +196,7 @@ public class Main {
 				}
 			}					
 		}
-		
-		// TODO more code
-		//if we look for a word in dict, we need to remove it.
-		return returnVal; // replace this line later with real return
+		return returnVal; 
 	}
     
 	public static Set<String>  makeDictionary () {
@@ -240,6 +231,4 @@ public class Main {
 			}
 		}
 	}
-	// TODO
-	// Other private static methods here
 }
