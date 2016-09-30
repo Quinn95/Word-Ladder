@@ -39,10 +39,10 @@ public class Main {
         System.out.println(start_end);
 		
         ArrayList<String> ladderBFS = getWordLadderBFS(start_end.get(0), start_end.get(1));
-        printLadder(ladderBFS);
+        printLadder(ladderBFS, start_end);
         
         ArrayList<String> ladderDFS = getWordLadderDFS(start_end.get(0), start_end.get(1));
-        printLadder(ladderDFS);
+        printLadder(ladderDFS, start_end);
 
 		// TODO methods to read in words, output ladder
         //getWordLadderDFS("smart", "money");
