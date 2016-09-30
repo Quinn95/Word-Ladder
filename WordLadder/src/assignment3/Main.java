@@ -220,10 +220,10 @@ public class Main {
 	 */
 	public static void printLadder(ArrayList<String> ladder, ArrayList<String> start_end) {
 		if (ladder.size() == 0){
-			System.out.println("no word ladder can be found between " + start_end.get(0) + " and " + start_end.get(1) + ".");
+			System.out.println("no word ladder can be found between " + start_end.get(0).toLowerCase() + " and " + start_end.get(1).toLowerCase() + ".");
 		}
 		else{
-	        	System.out.println("a " + (ladder.size() - 2) + "-rung word ladder exist between "+ ladder.get(0) + " and " + ladder.get(ladder.size() - 1) + ".");
+	        	System.out.println("a " + (ladder.size() - 2) + "-rung word ladder exist between "+ ladder.get(0).toLowerCase() + " and " + ladder.get(ladder.size() - 1).toLowerCase() + ".");
 			for(String s : ladder){
 				System.out.println(s.toLowerCase());
 			}
