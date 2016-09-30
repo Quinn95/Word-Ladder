@@ -36,7 +36,6 @@ public class Main {
 		}
 		initialize();
         ArrayList<String> start_end = parse(kb);
-        System.out.println(start_end);
 		
         ArrayList<String> ladderBFS = getWordLadderBFS(start_end.get(0), start_end.get(1));
         printLadder(ladderBFS, start_end);
