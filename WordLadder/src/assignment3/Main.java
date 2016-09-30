@@ -71,57 +71,44 @@ public class Main {
         return null;
 	}
 	
-	private static Node dfs(ArrayList<String> l, Node n, String end, Set<String> dict){
+	private static Node DFSTree(Node n, String end, Set<String> dict, Set<String> history){
 		if (n == null){
 			return null;
 		}
-		System.out.println(n.getName());
-
-		l.add(n.getName());
-		
-		if(n.getName() == end.toUpperCase()){
+		history.add(n.getName());
+		if (n.getName().equals(end)){
 			return n;
 		}
 		else{
 			for(int i = 0; i < n.getName().length(); i++){
 				for(char j = 'a'; j <= 'z'; j++){
 					char[] permutations = n.getName().toCharArray();
-						permutations[i] = j;
-						String permutationString = new String(permutations).toUpperCase();
-						if(l.contains(n.getName()) == false){
-							l.add(n.getName());
-							if(dict.contains(permutationString)){
-								Node nn = new Node(permutationString, n);
-								if(dfs(l, nn, end, dict) != null){
-									return nn;
-								}
-							System.out.println("yo");
-
-							return null;
+					permutations[i] = j;
+					String permutationString = new String(permutations).toUpperCase();
+					if(dict.contains(permutationString) == true){
+						if(history.contains(permutationString) == false){
+							Node w = DFSTree(new Node(permutationString.toUpperCase(), n), end.toUpperCase(), dict, history);
+							return w;
 						}
 					}
 				}
 			}
-			
 		}
 		return null;
 	}
 	
-	
 	public static ArrayList<String> getWordLadderDFS(String start, String end) {
 		
-		// Returned list should be ordered start to end.  Include start and end.
-		// Return empty list if no ladder.
-		// TODO some code
 		Set<String> dict = makeDictionary();
-		ArrayList<String> l = new ArrayList<String>();
-		dfs(l, new Node("start", null), end, dict);
+		ArrayList<String> returnVal = new ArrayList<String>();
+		Set<String> history = new HashSet<String>();
 		
+		Node n = DFSTree(new Node(start.toUpperCase(), null), end.toUpperCase(), dict, history);
 		
+		recursiveListMaker(n, returnVal);
 		
-		// TODO more code
+		return (returnVal);
 		
-		return null; // replace this line later with real return
 	}
 	
 	private static void recursiveListMaker(Node n, ArrayList<String> l){
