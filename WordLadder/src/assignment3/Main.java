@@ -47,8 +47,6 @@ public class Main {
 		// initialize your static variables or constants here.
 		// We will call this method before running our JUNIT tests.  So call it 
 		// only once at the start of main.
-		
-		
 	}
 	
 	/**
@@ -59,6 +57,8 @@ public class Main {
 	public static ArrayList<String> parse(Scanner keyboard) {
 		String input = keyboard.nextLine().toUpperCase();
 		input.trim(); //incase they have any leading or trailing spaces
+		
+		//if they type /quit
 		if (input.equals("/quit")){
 			System.exit(0);
 		}
@@ -76,10 +76,12 @@ public class Main {
 	 * @return the Node that contains the ending word as its name or null
 	 */
 	private static Node DFSTree(Node n, String end, Set<String> dict, ArrayList<String> history){
+		//base case 1
 		if (n == null){
 			return null;
 		}
 		history.add(n.getName().toUpperCase());
+		//base case 2
 		if (n.getName().toUpperCase().equals(end)){
 			return n;
 		}
@@ -89,8 +91,11 @@ public class Main {
 					char[] permutations = n.getName().toCharArray();
 					if (permutations[i] != j){
 						permutations[i] = j;
+						//creates a new word
 						String permutationString = new String(permutations).toUpperCase();
+						//check to see if the word exists in the dictionary
 						if(dict.contains(permutationString) == true){
+							//check to see if the word is already in our history
 							if(history.contains(permutationString) == false){
 								Node nn = new Node(permutationString.toUpperCase(), n);
 								Node w = DFSTree(nn, end.toUpperCase(), dict, history);
