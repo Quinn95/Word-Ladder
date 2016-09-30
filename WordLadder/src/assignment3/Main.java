@@ -112,9 +112,13 @@ public class Main {
 		
 		Set<String> dict = makeDictionary();
 		ArrayList<String> returnVal = new ArrayList<String>();
-		Set<String> history = new HashSet<String>();
+		ArrayList<String> history = new ArrayList<String>();
 		
 		Node n = DFSTree(new Node(start.toUpperCase(), null), end.toUpperCase(), dict, history);
+		
+		if (n == null){
+			return (returnVal);
+		}
 		
 		recursiveListMaker(n, returnVal);
 		
@@ -196,14 +200,19 @@ public class Main {
 	}
 	
 	public static void printLadder(ArrayList<String> ladder) {
-		if (ladder.size() == 0){
-        		System.out.println("no word adder can be found between " + ladder.get(0) + " and " + ladder.get(ladder.size() - 1) + ".");
-       		 }
+		if (ladder == null){
+			System.out.println("no word ladder can be found between ");
+		}
 		else{
-        		System.out.println("a " + ladder.size() + "-rung word ladder exist between "+ ladder.get(0) + " and " + ladder.get(ladder.size() - 1) + ".");
-        	}
-		for(String s : ladder){
-			System.out.println(s);
+			if (ladder.size() == 0){
+	        	System.out.println("no word adder can be found between " + ladder.get(0) + " and " + ladder.get(ladder.size() - 1) + ".");
+	        }
+	        else{
+	        	System.out.println("a " + ladder.size() + "-rung word ladder exist between "+ ladder.get(0) + " and " + ladder.get(ladder.size() - 1) + ".");
+	        }
+			for(String s : ladder){
+				System.out.println(s);
+			}
 		}
 	}
 	// TODO
