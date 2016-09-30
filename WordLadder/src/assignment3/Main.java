@@ -59,7 +59,7 @@ public class Main {
 		input.trim(); //incase they have any leading or trailing spaces
 		
 		//if they type /quit
-		if (input.equals("/quit")){
+		if (input.equals("/QUIT")){
 			System.exit(0);
 		}
 		String[] words = input.split(" ");
