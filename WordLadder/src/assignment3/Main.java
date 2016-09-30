@@ -37,9 +37,18 @@ public class Main {
 		initialize();
         ArrayList<String> start_end = parse(kb);
         System.out.println(start_end);
+		
+	ArrayList<String> ladder = getWordLadderBFS(start_end.get(0), start_end.get(1));
+        if (ladder.size() == 0){
+        	System.out.println("no word adder can be found between " + start_end.get(0) + " and " + start_end.get(1) + ".");
+        }
+        else{
+        	System.out.println("a " + ladder.size() + "-rung word ladder exist between "+ start_end.get(0) + " and " + start_end.get(1) + ".");
+        	printLadder(ladder);
+        }
 
 		// TODO methods to read in words, output ladder
-        getWordLadderDFS("smart", "money");
+        //getWordLadderDFS("smart", "money");
         //System.out.println();
         //printLadder(getWordLadderBFS("cells", "below"));
 
