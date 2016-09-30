@@ -212,7 +212,7 @@ public class Main {
 	        	System.out.println("a " + ladder.size() + "-rung word ladder exist between "+ ladder.get(0) + " and " + ladder.get(ladder.size() - 1) + ".");
 	        }
 			for(String s : ladder){
-				System.out.println(s);
+				System.out.println(s.toLowerCase());
 			}
 		}
 	}
