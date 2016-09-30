@@ -39,7 +39,10 @@ public class Main {
         System.out.println(start_end);
 
 		// TODO methods to read in words, output ladder
-        getWordLadderBFS("smart", "money");
+        getWordLadderDFS("smart", "money");
+        //System.out.println();
+        //printLadder(getWordLadderBFS("cells", "below"));
+
 	}
 	
 	public static void initialize() {
@@ -68,18 +71,65 @@ public class Main {
         return null;
 	}
 	
+	private static Node dfs(ArrayList<String> l, Node n, String end, Set<String> dict){
+		if (n == null){
+			return null;
+		}
+		System.out.println(n.getName());
+
+		l.add(n.getName());
+		
+		if(n.getName() == end.toUpperCase()){
+			return n;
+		}
+		else{
+			for(int i = 0; i < n.getName().length(); i++){
+				for(char j = 'a'; j <= 'z'; j++){
+					char[] permutations = n.getName().toCharArray();
+						permutations[i] = j;
+						String permutationString = new String(permutations).toUpperCase();
+						if(l.contains(n.getName()) == false){
+							l.add(n.getName());
+							if(dict.contains(permutationString)){
+								Node nn = new Node(permutationString, n);
+								if(dfs(l, nn, end, dict) != null){
+									return nn;
+								}
+							System.out.println("yo");
+
+							return null;
+						}
+					}
+				}
+			}
+			
+		}
+		return null;
+	}
+	
+	
 	public static ArrayList<String> getWordLadderDFS(String start, String end) {
 		
 		// Returned list should be ordered start to end.  Include start and end.
 		// Return empty list if no ladder.
 		// TODO some code
 		Set<String> dict = makeDictionary();
+		ArrayList<String> l = new ArrayList<String>();
+		dfs(l, new Node("start", null), end, dict);
+		
+		
 		
 		// TODO more code
 		
 		return null; // replace this line later with real return
 	}
 	
+	private static void recursiveListMaker(Node n, ArrayList<String> l){
+		if(n.getParent() != null){
+			recursiveListMaker(n.getParent(), l);
+		}
+		l.add(n.getName());
+	}
 	
     public static ArrayList<String> getWordLadderBFS(String start, String end) {
 		if(start.equals(end)){
@@ -96,15 +146,15 @@ public class Main {
 	    ArrayList<String> returnVal = new ArrayList<String>();
 				
 		LinkedList<Node> queue = new LinkedList<Node>(); //Queue to keep track of words
-		queue.add(new Node(start, null));
+		queue.add(new Node(start.toUpperCase(), null));
 		
 		char[] permutations;
 		Node head;
 		while(queue.isEmpty() == false){
 			head = queue.pop();
-			System.out.println(head.getName());
 			if(head.getName().equals(end.toUpperCase())){
-				System.exit(3);
+				recursiveListMaker(head, returnVal);
+				break;
 			}
 			
 			if(history.contains(head.getName().toUpperCase()) == false){
@@ -116,23 +166,19 @@ public class Main {
 						permutations = head.getName().toCharArray();
 						permutations[i] = j;
 						String permutationString = new String(permutations).toUpperCase();
-						if(dict.contains(permutationString)){
-							if(history.contains(permutationString) == false){
+						if(history.contains(permutationString) == false){
+							if(dict.contains(permutationString)){
 								queue.add(new Node(permutationString, head));
 							}
 						}
 					}
 				}
-				// TODO stuff
-			}
-		
-		
-					
+			}					
 		}
 		
 		// TODO more code
 		//if we look for a word in dict, we need to remove it.
-		return null; // replace this line later with real return
+		return returnVal; // replace this line later with real return
 	}
     
 	public static Set<String>  makeDictionary () {
@@ -152,7 +198,9 @@ public class Main {
 	}
 	
 	public static void printLadder(ArrayList<String> ladder) {
-		
+		for(String s : ladder){
+			System.out.println(s);
+		}
 	}
 	// TODO
 	// Other private static methods here

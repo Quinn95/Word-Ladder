@@ -7,7 +7,7 @@ public class Node{
 	
 	
 	Node(String name, Node parent){
-		this.name = name;
+		this.name = name.toUpperCase();
 		this.parent = parent;
 	}
 	
@@ -26,5 +26,4 @@ public class Node{
 	public void setVisisted(){
 		this.visited = true;
 	}
-
 }
