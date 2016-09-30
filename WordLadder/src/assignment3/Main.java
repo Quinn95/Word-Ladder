@@ -57,9 +57,7 @@ public class Main {
 	 * If command is /quit, return empty ArrayList. 
 	 */
 	public static ArrayList<String> parse(Scanner keyboard) {
-		// TO DO
-		System.out.print("Enter starting and ending word: ");
-		String input = keyboard.nextLine();
+		String input = keyboard.nextLine().toUpperCase();
 		input.trim(); //incase they have any leading or trailing spaces
 		if (input.equals("/quit")){
 			System.exit(0);
