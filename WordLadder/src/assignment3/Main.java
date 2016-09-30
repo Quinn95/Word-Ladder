@@ -76,6 +76,14 @@ public class Main {
         return null;
 	}
 	
+	/**
+	 * This method will return the node that contains the ending word of the ladder.
+	 * @param n is the Node we are checking
+	 * @param end is the string of the ending word on the ladder
+	 * @param dict contains all the valid words
+	 * @param history an ArrayList<String> that will contain all the words we have gone over to avoid duplicates
+	 * @return the Node that contains the ending word as its name or null
+	 */
 	private static Node DFSTree(Node n, String end, Set<String> dict, ArrayList<String> history){
 		if (n == null){
 			return null;
@@ -107,6 +115,12 @@ public class Main {
 		}
 	}
 	
+	/**
+	 * This method returns the word ladder based on the DFS algorithm
+	 * @param start is the string of the beginning word on the ladder
+	 * @param end is the string of the ending word on the ladder
+	 * @return an ArrayList<String> that cointains the starting and ending words on the ladder
+	 */
 	public static ArrayList<String> getWordLadderDFS(String start, String end) {
 		
 		Set<String> dict = makeDictionary();
@@ -125,6 +139,11 @@ public class Main {
 		
 	}
 	
+	/**
+	 * This method adds the words on the ladder to the ArrayList<String> 1
+	 * @param n is the ending Node of the ladder
+	 * @param l is an ArrayList<String> that will contain all the words on the ladder
+	 */
 	private static void recursiveListMaker(Node n, ArrayList<String> l){
 		if(n.getParent() != null){
 			recursiveListMaker(n.getParent(), l);
@@ -134,7 +153,13 @@ public class Main {
 		}
 	}
 	
-    public static ArrayList<String> getWordLadderBFS(String start, String end) {
+	/**
+	 * This method returns the word ladder based on the BFS algorithm
+	 * @param start is the string of the beginning word on the ladder
+	 * @param end is the string of the ending word on the ladder
+	 * @return an ArrayList<String> of all the words that needs to be printed out for the ladder
+	 */
+    	public static ArrayList<String> getWordLadderBFS(String start, String end) {
 		if(start.equals(end)){
 			//do stuff
 		}
@@ -200,6 +225,11 @@ public class Main {
 		return words;
 	}
 	
+	/**
+	 * This method prints out the ladder
+	 * @param ladder is a ArrayList<String> that contains all the words of the ladder.
+	 * @param start_end is an ArrayList<String> that contains just the beginning and ending words of the ladder.
+	 */
 	public static void printLadder(ArrayList<String> ladder, ArrayList<String> start_end) {
 		if (ladder.size() == 0){
 			System.out.println("no word ladder can be found between " + start_end.get(0) + " and " + start_end.get(1) + ".");
