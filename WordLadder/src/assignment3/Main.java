@@ -77,25 +77,26 @@ public class Main {
         return null;
 	}
 	
-	private static Node DFSTree(Node n, String end, Set<String> dict, Set<String> history){
+	private static Node DFSTree(Node n, String end, Set<String> dict, ArrayList<String> history){
 		if (n == null){
 			return null;
 		}
-		history.add(n.getName());
-		if (n.getName().equals(end)){
+		history.add(n.getName().toUpperCase());
+		if (n.getName().toUpperCase().equals(end)){
 			return n;
 		}
 		else{
 			for(int i = 0; i < n.getName().length(); i++){
 				for(char j = 'a'; j <= 'z'; j++){
 					char[] permutations = n.getName().toCharArray();
-					permutations[i] = j;
-					String permutationString = new String(permutations).toUpperCase();
-					if(dict.contains(permutationString) == true){
-						if(history.contains(permutationString) == false){
-							Node w = DFSTree(new Node(permutationString.toUpperCase(), n), end.toUpperCase(), dict, history);
-							if (w != null){
-								if (w.getName().equals(end)){
+					if (permutations[i] != j){
+						permutations[i] = j;
+						String permutationString = new String(permutations).toUpperCase();
+						if(dict.contains(permutationString) == true){
+							if(history.contains(permutationString) == false){
+								Node nn = new Node(permutationString.toUpperCase(), n);
+								Node w = DFSTree(nn, end.toUpperCase(), dict, history);
+								if (w != null){
 									return w;
 								}
 							}
@@ -103,8 +104,8 @@ public class Main {
 					}
 				}
 			}
+			return null;
 		}
-		return null;
 	}
 	
 	public static ArrayList<String> getWordLadderDFS(String start, String end) {
