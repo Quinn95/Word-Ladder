@@ -130,7 +130,9 @@ public class Main {
 		if(n.getParent() != null){
 			recursiveListMaker(n.getParent(), l);
 		}
-		l.add(n.getName());
+		if(n != null){
+			l.add(n.getName());
+		}
 	}
 	
     public static ArrayList<String> getWordLadderBFS(String start, String end) {
